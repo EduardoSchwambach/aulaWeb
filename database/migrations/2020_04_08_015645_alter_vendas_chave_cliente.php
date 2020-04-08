@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableVendas extends Migration
+class AlterVendasChaveCliente extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateTableVendas extends Migration
      */
     public function up()
     {
-        Schema::create('vendas', function (Blueprint $table) {
-            $table->id();
-            $table->double('valor', 8, 2);
-            $table->unsignedBigInteger('id_usuario');
+        Schema::table('vendas', function (Blueprint $table) {
             $table->unsignedBigInteger('id_cliente');
-            $table->timestamps();
-
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+        
+            $table->foreign('id_cliente')->references('id')->on('clientes');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateTableVendas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendas');
+        $table->dropForeign('vendas_id_cliente_foreign');
     }
 }

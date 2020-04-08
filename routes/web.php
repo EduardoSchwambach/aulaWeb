@@ -15,6 +15,7 @@ Route::get('/sobre', function () {
     return view('welcome');
 });
 
+//ROTAS DO USUARIO
 Route::get('/usuario/cadastro', 'UsuarioController@telaCadastro')
 	->name('usuario_cadastro');
 
@@ -28,5 +29,27 @@ Route::get('/usuario/excluir/{id}', 'UsuarioController@excluir')->name('usuario_
 
 Route::get('/usuario/listar', 'UsuarioController@listar')->name('listar');
 
-Route::get('/tela_login', 'AppController@tela_login');
+//ROTAS DE LOGIN
+Route::get('/tela_login', 'AppController@tela_login')->name('tela_login');
 Route::post('/login', 'AppController@login')->name('logar');
+
+//INDEX
+Route::get('/index', 'AppController@index')->name('index');
+
+//ROTAS DO CLIENTE
+Route::get('/cliente/cadastro', 'ClienteController@telaCadastroCliente')
+	->name('cliente_cadastro');
+
+Route::get('/cliente/alterar/{id}', 'ClienteController@telaAlteracaoCliente')->name('cliente_update');
+	
+Route::post('/cliente/adicionar', 'ClienteController@adicionarCliente')
+		->name('cliente_add');
+Route::post('/cliente/alterar/{id}', 'ClienteController@alterarCliente')->name('cliente_alterar');
+
+Route::get('/cliente/excluir/{id}', 'ClienteController@excluirCliente')->name('cliente_delete');
+
+Route::get('/cliente/listar', 'ClienteController@listarCliente')->name('listarCliente');
+
+//ROTAS DE VENDA
+Route::get('venda/registro', 'VendaController@registroVenda')->name('registro');
+Route::post('/venda/adicionar', 'VendaController@adicionarVenda')->name('venda_add');

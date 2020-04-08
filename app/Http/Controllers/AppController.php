@@ -10,7 +10,12 @@ class AppController extends Controller
     function tela_login(){
     	//Exibir tela de login
     	return view('tela_login');
-    }
+	}
+	
+	function index(){
+		//Exibe a pagina index
+		return view("index");
+	}
 
     function login(Request $req){
     	//Comparar usuário e senha
@@ -23,7 +28,7 @@ class AppController extends Controller
     	if ($usuario and $usuario->senha == $senha){
     		//se nao é null, entra aqui
     		//login e senha estão certos
-    		return redirect()->route('listar');
+    		return redirect()->route('index');
     	} else {
     		return view("resultado", ["mensagem" => "Usuário ou senha inválidos."]);
     	}
