@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('conteudo')
-<h1>Cadastro de usuário</h1>
+<h1>Cadastro de usuários</h1>
 <form method="post" action="{{ route('usuario_add') }}">
 	@csrf
 	<input type="text" class="form-control" name="nome" placeholder="Nome">
