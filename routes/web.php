@@ -32,6 +32,7 @@ Route::get('/usuario/listar', 'UsuarioController@listar')->name('listar');
 //ROTAS DE LOGIN
 Route::get('/tela_login', 'AppController@tela_login')->name('tela_login');
 Route::post('/login', 'AppController@login')->name('logar');
+Route::get('/logout', 'AppController@logout')->name('logout');
 
 //INDEX
 Route::get('/index', 'AppController@index')->name('index');
@@ -53,3 +54,5 @@ Route::get('/cliente/listar', 'ClienteController@listarCliente')->name('listarCl
 //ROTAS DE VENDA
 Route::get('venda/registro', 'VendaController@registroVenda')->name('registro');
 Route::post('/venda/adicionar', 'VendaController@adicionarVenda')->name('venda_add');
+Route::get('/venda/usuario/{id}', 'VendaController@vendasPorUsuario')->name('vendas_usuario');
+Route::get('/venda/cliente/{id}', 'VendaController@comprasPorCliente')->name('compras_cliente');

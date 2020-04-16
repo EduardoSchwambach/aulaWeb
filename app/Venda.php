@@ -12,9 +12,4 @@ class Venda extends Model
     function usuario(){
     	return $this->belongsTo('App\Usuario', 'id_usuario', 'id');
     }
-
-    public function clientes()
-    {
-        return $this->hasMany('App\Cliente', 'id_usuario', 'id');
-    }
 }

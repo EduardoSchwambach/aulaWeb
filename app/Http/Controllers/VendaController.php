@@ -37,4 +37,20 @@ class VendaController extends Controller
 
         return view("resultado", [ "mensagem" => $msg]);
     }
+
+    function vendasPorUsuario($id){
+        /* $id = id do usuario */
+        $usuario = Usuario::find($id);
+        
+        return view('lista_vendas', ["usuario" => $usuario]);
+    }
+
+    function comprasPorCliente($id){
+        /* $id = id do cliente */
+        $cliente = Cliente::find($id);
+        $usuarios = Usuario::all();
+        
+        return view('lista_compras', ["cliente" => $cliente], [ "us" => $usuarios ]);
+       
+    }
 }

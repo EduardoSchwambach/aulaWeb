@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterVendasDescricao extends Migration
+class AlterTableVendasChave extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AlterVendasDescricao extends Migration
      */
     public function up()
     {
-        Schema::table('vendas', function(BLueprint $table){
-            $table->string('descricao', 255)->nullable()->change();
+        Schema::table('vendas', function (Blueprint $table) {
+        
+            $table->foreign('id_cliente')->references('id')->on('clientes');
         });
     }
 
@@ -25,8 +26,6 @@ class AlterVendasDescricao extends Migration
      */
     public function down()
     {
-        Schema::table('vendas', function(BLueprint $table){
-            $table->string('descricao', 255)->change();
-        });
+        $table->dropForeign('vendas_id_cliente_foreign');
     }
 }

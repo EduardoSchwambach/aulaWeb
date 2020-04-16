@@ -26,7 +26,7 @@
 			        <a class="nav-link" href="{{ route('cliente_cadastro') }}">Cadastrar Clientes</a>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link" href="{{ route('tela_login') }}">Sair</a>
+			        <a class="nav-link" href="{{ route('logout') }}">Sair</a>
 			      </li>
 			    </ul>
 			  </div>
