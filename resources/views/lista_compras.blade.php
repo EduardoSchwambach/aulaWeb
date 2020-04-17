@@ -18,6 +18,7 @@
 			<td>{{ $v->id }}</td>
             <td>{{ $v->valor }}</td>
             <td>{{ $v->descricao }}</td>
+			<td>{{ $v->id_usuario }}</td>
 		</tr>
 		@endforeach
 	</tbody>

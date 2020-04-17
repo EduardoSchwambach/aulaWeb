@@ -8,6 +8,7 @@
 		<tr>
 			<th>ID Venda</th>
 			<th>Valor</th>
+			<th>Produto</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,6 +16,7 @@
 		<tr>
 			<td>{{ $v->id }}</td>
 			<td>{{ $v->valor }}</td>
+			<td>{{ $v->descricao }}</td>
 		</tr>
 		@endforeach
 	</tbody>

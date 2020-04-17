@@ -43,5 +43,5 @@ class AppController extends Controller
         session()->forget(["login", "nome"]);
         
         return redirect()->route('tela_login');
-    }
+	}
 }
