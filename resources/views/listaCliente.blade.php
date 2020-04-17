@@ -20,6 +20,7 @@
 			<td>
 				<a class="btn btn-warning" href="{{ route('cliente_update', [ 'id' => $u->id ]) }}">Alterar</a>
 				<a class="btn btn-danger" href="#" onclick="exclui({{$u->id}})">Excluir</a>
+				<a class="btn btn-info" href="{{ route('compras_cliente', ['id' => $u->id]) }}">Compras</a>
 			</td>
 		</tr>
 		@endforeach

@@ -12,7 +12,7 @@
     </div>
     <div class="form-group col-md-6">
       <label for="valorTotal">Valor Total</label>
-      <input type="text" class="form-control" name="valorTotal" placeholder="Valor">
+      <input type="number" step="0.01" class="form-control" name="valorTotal" placeholder="Valor">
     </div>
   </div>
   <div class="form-row">

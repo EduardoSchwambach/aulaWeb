@@ -8,52 +8,68 @@ use App\Usuario;
 class UsuarioController extends Controller
 {
     function telaCadastro(){
-    	return view("tela_cadastro_usuario");
+        if (session()->has("login")){
+            return view("tela_cadastro_usuario");
+        }else{
+            return redirect()->route('tela_login');
+        } 
     }
 
     function telaAlteracao($id){
-        $usuario = Usuario::find($id);
+        if (session()->has("login")){
+            $usuario = Usuario::find($id);
 
-        return view("tela_alterar_usuario", [ "u" => $usuario ]);
+            return view("tela_alterar_usuario", [ "u" => $usuario ]);
+        }else{
+            return redirect()->route('tela_login');
+        }    
     }
 
     function adicionar(Request $req){
-    	$nome = $req->input('nome');
-    	$login = $req->input('login');
-    	$senha = $req->input('senha');
+        if (session()->has("login")){
+            $nome = $req->input('nome');
+            $login = $req->input('login');
+            $senha = $req->input('senha');
 
-    	$usuario = new Usuario();
-    	$usuario->nome = $nome;
-    	$usuario->login = $login;
-    	$usuario->senha = $senha;
+            $usuario = new Usuario();
+            $usuario->nome = $nome;
+            $usuario->login = $login;
+            $usuario->senha = $senha;
 
-    	if ($usuario->save()){
-    		$msg = "Usuário $nome adicionado com sucesso.";
-    	} else {
-    		$msg = "Usuário não foi cadastrado.";
-    	}
+            if ($usuario->save()){
+                $msg = "Usuário $nome adicionado com sucesso.";
+            } else {
+                $msg = "Usuário não foi cadastrado.";
+            }
 
-        return view("resultado", [ "mensagem" => $msg]);
+            return view("resultado", [ "mensagem" => $msg]);
+        }else{
+            return redirect()->route('tela_login');
+        }   
     }
 
     function alterar(Request $req, $id){
-        $usuario = Usuario::find($id);
+        if (session()->has("login")){
+            $usuario = Usuario::find($id);
 
-        $nome = $req->input('nome');
-        $login = $req->input('login');
-        $senha = $req->input('senha');
+            $nome = $req->input('nome');
+            $login = $req->input('login');
+            $senha = $req->input('senha');
 
-        $usuario->nome = $nome;
-        $usuario->login = $login;
-        $usuario->senha = $senha;
+            $usuario->nome = $nome;
+            $usuario->login = $login;
+            $usuario->senha = $senha;
 
-        if ($usuario->save()){
-            $msg = "Usuário $nome alterado com sucesso.";
-        } else {
-            $msg = "Usuário não foi alterado.";
-        }
+            if ($usuario->save()){
+                $msg = "Usuário $nome alterado com sucesso.";
+            } else {
+                $msg = "Usuário não foi alterado.";
+            }
 
-        return view("resultado", [ "mensagem" => $msg]);
+            return view("resultado", [ "mensagem" => $msg]);
+        }else{
+            return redirect()->route('tela_login');
+        } 
     }
 
     function excluir($id){
@@ -69,9 +85,14 @@ class UsuarioController extends Controller
     }
 
     function listar(){
-        $usuarios = Usuario::all();
+        if (session()->has("login")){
+            $usuarios = Usuario::all();
 
-        return view("lista", [ "us" => $usuarios ]);
+            return view("lista", [ "us" => $usuarios ]);
+        }else{
+
+        return redirect()->route('tela_login');
+        }
     }
 
 }
